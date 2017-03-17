@@ -13,7 +13,7 @@
 	<h1>${team.city} ${team.mascot}</h1>
 	<a href="removeteam.do?abr=${team.abr}">Delete Team</a>
 	<a href="routeedit.do?abr=${team.abr}">Edit Team</a>
-	<a href="addplayer.do?abr=${team.abr}">Add player</a>
+	<a href="addplayer.html">Add player</a>
 	
 	<h2>Player Roster</h2>
 	<c:forEach var="hitter" items="${hitters}">

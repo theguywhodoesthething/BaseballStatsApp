@@ -19,8 +19,14 @@ public class Pitcher implements Player {
 	private Double fbmph;
 	private Double era;
 	private Double fip;
-	
-	public Pitcher(){};
+
+	public Pitcher() {}
+
+	public Pitcher(String lastName, String firstName, String team) {
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.team = team;
+	}
 
 	public Pitcher(String lastName, String firstName, String team, Integer g, Double ip, Integer gs, Integer qs,
 			Double qsPercentage, Double kPerBb, Double kPer9, Double bbPer9, Double hrPer9, Double babip,

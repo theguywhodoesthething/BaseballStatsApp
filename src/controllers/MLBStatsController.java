@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import data.Hitter;
 import data.MLBDAO;
+import data.Pitcher;
+import data.Player;
 import data.Team;
 
 @Controller
@@ -80,13 +83,24 @@ public class MLBStatsController {
 		return "editteam";
 	}
 	
-	@RequestMapping(path = "addplayer.do", params = "abr", method = RequestMethod.GET)
-	public String addPlayer(Model model, @RequestParam("abr") String a) {
+	@RequestMapping(path = "addplayer.do", params = {"lastName", "firstName", "pos"}, method = RequestMethod.GET)
+	public String addPlayer(Model model, @RequestParam("abr") String a, String lastName,
+			String firstName, String pos, @ModelAttribute("sessionTeam") Team team) {
 		
-		Team t = mlbDAO.getTeams().get(a);
+		Player player;
 		
-		model.addAttribute("team", t);
-		return "addplayer";
+		if (pos.toLowerCase().equals("pitcher")) {
+			player = new Pitcher(lastName, firstName, team.getAbr());
+		} else {
+			player = new Hitter(lastName, firstName, team.getAbr(), pos);
+		}
+		
+		team.addPlayerToRoster(player);
+
+		model.addAttribute("team", team);
+		model.addAttribute("hitters", team.getHitterRoster());
+		model.addAttribute("pitchers", team.getPitcherRoster());
+		return "team";
 	}
 
 	@RequestMapping(path = "editteam.do", params = { "city", "mascot", "state", "league", "division",

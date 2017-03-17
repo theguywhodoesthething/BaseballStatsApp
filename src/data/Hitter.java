@@ -22,6 +22,13 @@ public class Hitter implements Player{
 	private Double babip;
 	
 	public Hitter(){}
+	
+	public Hitter(String lastName, String firstName, String team, String pos) {
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.team = team;
+		this.pos = pos;
+	}
 
 	public Hitter(String firstName, String lastName, String team, String pos, Integer g, Integer ab, Double ppPerA,
 			Integer bunts, Integer gidp, Integer ibb, Integer bb, Integer k, Double bbPercentage, Double bbPerK,
