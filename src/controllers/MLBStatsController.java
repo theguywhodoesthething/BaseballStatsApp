@@ -79,6 +79,15 @@ public class MLBStatsController {
 		model.addAttribute("team", t);
 		return "editteam";
 	}
+	
+	@RequestMapping(path = "addplayer.do", params = "abr", method = RequestMethod.GET)
+	public String addPlayer(Model model, @RequestParam("abr") String a) {
+		
+		Team t = mlbDAO.getTeams().get(a);
+		
+		model.addAttribute("team", t);
+		return "addplayer";
+	}
 
 	@RequestMapping(path = "editteam.do", params = { "city", "mascot", "state", "league", "division",
 			"picturePath" }, method = RequestMethod.POST)
