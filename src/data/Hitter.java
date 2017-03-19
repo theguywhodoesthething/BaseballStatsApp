@@ -52,7 +52,7 @@ public class Hitter implements Player{
 		this.avg = avg;
 		this.babip = babip;
 	}
-
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -60,7 +60,7 @@ public class Hitter implements Player{
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
+	
 	public String getLastName() {
 		return lastName;
 	}
@@ -204,6 +204,37 @@ public class Hitter implements Player{
 				+ ", bb=" + bb + ", k=" + k + ", bbPercentage=" + bbPercentage + ", bbPerK=" + bbPerK
 				+ ", ctPercentage=" + ctPercentage + ", sboPercentage=" + sboPercentage + ", avg=" + avg + ", babip="
 				+ babip + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Player player) {
+		if (this == player)
+			return true;
+		if (player == null)
+			return false;
+		if (!(player instanceof Hitter))
+			return false;
+		Hitter other = (Hitter) player;
+		if (firstName == null) {
+			if (other.firstName != null)
+				return false;
+		} else if (!firstName.equals(other.firstName))
+			return false;
+		if (lastName == null) {
+			if (other.lastName != null)
+				return false;
+		} else if (!lastName.equals(other.lastName))
+			return false;
+		return true;
 	}
 	
 }

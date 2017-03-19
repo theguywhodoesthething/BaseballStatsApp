@@ -7,13 +7,17 @@
 <body>
 	<h3>Add New Player</h3>
 	<form action="addnewplayer.do" method="POST">
-		Last Name:
-		<input type="text" name="lastName" value="Rusty"/><br/>
-		First Name:
-		<input type="text" name="firstName" value="Thompson"/><br/>
-		Position: 
-		<input type="text" name="pos" value="1B"/><br/>
-		<input type="submit" value="Add Player" />
+		First Name: <input type="text" name="firstName" value="Rusty" /><br />
+		Last Name: <input type="text" name="lastName" value="Thompson" /><br />
+		Position: <select name="pos">
+			<option value="C">Catcher</option>
+			<option value="P">Pitcher</option>
+			<option value="1B">First Base</option>
+			<option value="2B">Second Base</option>
+			<option value="SS">Short Stop</option>
+			<option value="3B">Third Base</option>
+			<option value="OF">Outfield</option>
+		</select> <br /> <input type="submit" value="Add Player" />
 	</form>
 </body>
 </html>

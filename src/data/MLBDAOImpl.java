@@ -54,8 +54,8 @@ public class MLBDAOImpl implements MLBDAO {
 			String line;
 			while ((line = buf.readLine()) != null) {
 				String[] tokens = line.split(",");
-				String lastName = tokens[0];
-				String firstName = tokens[1];
+				String lastName = tokens[0].trim();
+				String firstName = tokens[1].trim();
 				String team = tokens[2];
 				String pos = tokens[3];
 				Integer g = Integer.parseInt(tokens[4]);
@@ -87,8 +87,8 @@ public class MLBDAOImpl implements MLBDAO {
 			String line = buf.readLine();
 			while ((line = buf.readLine()) != null) {
 				String[] tokens = line.split(",");
-				String lastName = tokens[0];
-				String firstName = tokens[1];
+				String lastName = tokens[0].trim();
+				String firstName = tokens[1].trim();
 				String team = tokens[2];
 				Integer g = Integer.parseInt(tokens[3]);
 				Double ip = Double.parseDouble(tokens[4]);
@@ -107,7 +107,7 @@ public class MLBDAOImpl implements MLBDAO {
 				Player p = new Pitcher(lastName, firstName, team, g, ip, gs, qs, qsPercentage, 
 						kPerBb, kPer9, bbPer9, hrPer9, babip, strPercentage, fbmph, era, fip);
 				players.put(lastName, p);
-				teams.get(tokens[2]).addPlayerToRoster(p);		
+				teams.get(tokens[2]).addPlayerToRoster(p);
 			}
 		} catch (Exception e) {
 			System.err.println(e);

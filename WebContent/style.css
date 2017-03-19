@@ -1,0 +1,6 @@
+@CHARSET "UTF-8";
+
+table, td {
+    border: 1px solid black;
+    align-items: center;
+}

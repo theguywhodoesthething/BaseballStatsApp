@@ -49,7 +49,7 @@ public class Pitcher implements Player {
 		this.era = era;
 		this.fip = fip;
 	}
-
+	
 	public String getLastName() {
 		return lastName;
 	}
@@ -57,7 +57,7 @@ public class Pitcher implements Player {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -193,4 +193,36 @@ public class Pitcher implements Player {
 				+ ", kPer9=" + kPer9 + ", bbPer9=" + bbPer9 + ", hrPer9=" + hrPer9 + ", babip=" + babip
 				+ ", strPercentage=" + strPercentage + ", fbmph=" + fbmph + ", era=" + era + ", fip=" + fip + "]";
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Player player) {
+		if (this == player)
+			return true;
+		if (player == null)
+			return false;
+		if (!(player instanceof Pitcher))
+			return false;
+		Pitcher other = (Pitcher) player;
+		if (firstName == null) {
+			if (other.firstName != null)
+				return false;
+		} else if (!firstName.equals(other.firstName))
+			return false;
+		if (lastName == null) {
+			if (other.lastName != null)
+				return false;
+		} else if (!lastName.equals(other.lastName))
+			return false;
+		return true;
+	}
+
 }

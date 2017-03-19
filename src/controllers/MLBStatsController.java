@@ -82,19 +82,45 @@ public class MLBStatsController {
 		model.addAttribute("team", t);
 		return "editteam";
 	}
-	
-	@RequestMapping(path = "addplayer.do", params = {"lastName", "firstName", "pos"}, method = RequestMethod.GET)
-	public String addPlayer(Model model, @RequestParam("abr") String a, String lastName,
-			String firstName, String pos, @ModelAttribute("sessionTeam") Team team) {
+
+	@RequestMapping(path = "deleteplayer.do", params = { "firstName", "lastName", "list" }, method = RequestMethod.GET)
+	public String deletePlayer(Model model, String firstName, String lastName, String list,
+			@ModelAttribute("sessionTeam") Team team) {
+
+		String str = team.getAbr();
+		team = mlbDAO.getTeams().get(str);
 		
+		Player p = null;
+		
+		if(list.equals("p")) {
+			p = new Pitcher(lastName, firstName, null);
+		} else if (list.equals("h")) {
+			p = new Hitter(lastName, firstName, null, null);
+		}
+
+		team.removePlayer(p);
+
+		model.addAttribute("team", team);
+		model.addAttribute("hitters", team.getHitterRoster());
+		model.addAttribute("pitchers", team.getPitcherRoster());
+		return "team";
+	}
+
+	@RequestMapping(path = "addnewplayer.do", params = { "lastName", "firstName", "pos" }, method = RequestMethod.POST)
+	public String addPlayer(Model model, String lastName, String firstName, String pos,
+			@ModelAttribute("sessionTeam") Team team) {
+
+		String str = team.getAbr();
+		team = mlbDAO.getTeams().get(str);
+
 		Player player;
-		
-		if (pos.toLowerCase().equals("pitcher")) {
+
+		if (pos.equals("P")) {
 			player = new Pitcher(lastName, firstName, team.getAbr());
 		} else {
 			player = new Hitter(lastName, firstName, team.getAbr(), pos);
 		}
-		
+
 		team.addPlayerToRoster(player);
 
 		model.addAttribute("team", team);
@@ -123,6 +149,7 @@ public class MLBStatsController {
 
 	@RequestMapping(path = "retrieve.do", params = "abr", method = RequestMethod.GET)
 	public String getTeamRoster(Model model, @RequestParam("abr") String a, @ModelAttribute("sessionTeam") Team team) {
+
 		team = mlbDAO.getTeams().get(a);
 
 		model.addAttribute("team", team);
