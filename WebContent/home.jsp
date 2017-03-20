@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <title>2016 MLB Stats</title>
 </head>
 <h1>2016 Major League Baseball Statistics</h1>
@@ -17,8 +18,10 @@
 	</form>
 	<a href="addteam.html">Add new Team</a><br>
 	<c:forEach var="team" items="${teams}">
-		<img src="${team.picturePath}">
-		<a href="retrieve.do?abr=${team.abr}">${team.city} ${team.mascot}</a>
+		<div class="teams">
+		<img src="${team.picturePath}"/>
+		<h2><a href="retrieve.do?abr=${team.abr}">${team.city} ${team.mascot}</a></h2>
+		</div>
 		<br>
 	</c:forEach>
 </body>

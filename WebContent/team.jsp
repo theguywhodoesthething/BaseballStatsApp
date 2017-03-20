@@ -5,20 +5,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="style.css">
-<link rel="stylesheet" type="text/css" href="style.css">
 <title>${team.mascot}</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="mystyle.css">
 </head>
 <body>
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="welcome.do">Home</a>
+	    </div>
+	    <div class="collapse navbar-collapse" id="myNavbar">
+	      <ul class="nav navbar-nav">
+	        <li class="active"><a href="removeteam.do?abr=${team.abr}">Delete Team</a></li>
+	        <li><a href="routeedit.do?abr=${team.abr}">Edit Team</a></li>
+	        <li><a href="addplayer.html">Add Player</a></li>
+	    </div>
+		</nav>
+	<div id="tablebody">
 	<c:choose>
 		<c:when test="${team != null}">
 			<h1>${team.city} ${team.mascot}</h1>
-			<a href="removeteam.do?abr=${team.abr}">Delete Team</a>
-			<a href="routeedit.do?abr=${team.abr}">Edit Team</a>
-			<a href="addplayer.html">Add player</a>
-			<a href="welcome.do">Home</a>
-
 			<h2>Player Roster</h2>
 			<table>
 				<tr>
@@ -104,11 +118,13 @@
 					</tr>
 				</c:forEach>
 			</table>
+			<br><br>
 		</c:when>
 		<c:otherwise>
 			<p>No Team found</p>
 			<a href="welcome.do">Home</a>
 		</c:otherwise>
 	</c:choose>
+</div>
 </body>
 </html>
