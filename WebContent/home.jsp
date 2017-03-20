@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="style.css">
 <title>2016 MLB Stats</title>
 </head>
 <h1>2016 Major League Baseball Statistics</h1>

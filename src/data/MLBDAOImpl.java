@@ -3,7 +3,6 @@ package data;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -20,7 +19,6 @@ public class MLBDAOImpl implements MLBDAO {
 	private static final String POST_PATH = "_79x76.jpg";
 	
 	private Map<String, Team> teams = new TreeMap<>();
-	private Map<String, Player>players = new HashMap<>();
 
 	@Autowired
 	private WebApplicationContext wac;
@@ -75,7 +73,7 @@ public class MLBDAOImpl implements MLBDAO {
 				Player p = new Hitter(firstName, lastName, team, pos, g, ab, ppPerA, 
 						bunts, gidp, ibb, bb, k, bbPercentage, bbPerK, ctPercentage, 
 						sboPercentage, avg, babip);
-				players.put(lastName, p);
+
 				teams.get(tokens[2]).addPlayerToRoster(p);
 			}
 		} catch (Exception e) {
@@ -106,7 +104,7 @@ public class MLBDAOImpl implements MLBDAO {
 				Double fip = Double.parseDouble(tokens[16]);
 				Player p = new Pitcher(lastName, firstName, team, g, ip, gs, qs, qsPercentage, 
 						kPerBb, kPer9, bbPer9, hrPer9, babip, strPercentage, fbmph, era, fip);
-				players.put(lastName, p);
+
 				teams.get(tokens[2]).addPlayerToRoster(p);
 			}
 		} catch (Exception e) {

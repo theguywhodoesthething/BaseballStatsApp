@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="style.css">
 <title>Edit Team</title>
 </head>
 <body>
@@ -14,7 +15,7 @@
 		<input type="text" name="city" value="${team.city}"/><br/>
 		Mascot:
 		<input type="text" name="mascot" value="${team.mascot}"/><br/>
-		State: 
+		State:
 		<input type="text" name=state value="${team.state}"/><br/>
 		League:
 		<input type="text" name="league" value="${team.league}"/><br/>

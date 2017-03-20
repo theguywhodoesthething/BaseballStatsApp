@@ -167,6 +167,12 @@ public class Team {
 	}
 
 	public void removePlayer(Player player) {
+//		
+//		if (pitcherRoster.contains(player)) {
+//			this.pitcherRoster.remove(player);
+//		} else if (hitterRoster.contains(player)) {
+//			this.hitterRoster.remove(player);			
+//		}
 
 		for (Player p : pitcherRoster) {
 			if (p.equals(player)) {
